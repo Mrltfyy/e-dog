@@ -1,6 +1,6 @@
 let dog = {
   // 属性
-  name: 'XiXi',
+  name: 'mahua',
   age: 13,
   isMale: true,
 
