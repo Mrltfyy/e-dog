@@ -18,8 +18,17 @@
       width: 500px;
       height: 100px;
       line-height: 20px;
-      background-color: brown;
+      background-color: chocolate;
       border: 2px solid black;
+    }
+    .babyDogPic {
+      width: 500px;
+      height: 280px;
+      padding-top: 10px;
+      /* background-image: url(./images/babydog.jpg); */
+    }
+    .babyDog{
+      padding-top: 100px;
     }
   </style>
 </head>
@@ -27,10 +36,20 @@
   <!-- <img class="dogPic" src="./images/doge.jpg" alt="中华田园犬" /> -->
   <div id="yell" class="yell"></div>
   <div id="dogPic" class="dog" ></div>
+
   <div id="status"></div>
   <script src="object.js"></script>
   <button onclick="dog.feed()">喂它！</button>
   <button onclick="dog.run()">没事走两步！</button>
-  <button onclick="dog.resurrect()">复活吧，我的狗子！</button>
+  <button onclick="dog.resurrect()">复活吧！</button>
+  
+
+  <div id="babyDog" class="babyDog">
+  <input type="button" value="生了个小崽子" onclick="babyDog.acquisition()">
+  </div>
+  <img src="./images/babydog.jpg" id="babyDogPic" style="display: none;">
+  <div id="babyStatus"></div>
+  <div id="babyDogYell" class="babyDogYell"></div>
+  <!-- <ing id="babyDogPic" class="babyDogPic"></div> -->
 </body>
 </html>

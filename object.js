@@ -1,6 +1,6 @@
 let dog = {
   // 属性
-  name: 'mahua',
+  name: '麻花',
   age: 13,
   isMale: true,
 
@@ -76,7 +76,7 @@ let dog = {
       self.food--;
       self.checkFood();
       self.checkHealth();
-    }, 100);
+    }, 300);
   },
 
   checkFood: function (){
@@ -120,7 +120,146 @@ let dog = {
       view.displayYell('说啥呢，老子活蹦乱跳');
     }
   },
+
+
 };
+
+let babyDog = {
+  name: '花花',
+  age: 1,   
+  isMale: true,
+
+  // 是否存活
+  isLive: true,
+
+  // 为宠物添加饱食度，这个属性
+  food: 100,
+  
+  // 健康度
+  health: 100,
+  // 生存计时器
+  liveTimer: null,
+
+
+  
+  tellName: function() {
+    if (!this.isLiving()) return;
+     view.displayYell('my name is ' + this.name);
+    return this.name;
+  },
+
+  // 利用内部的方法，来修改宠物的名字
+  setName: function(newName) {
+    if (!this.isLiving()) return;
+     this.name = newName;
+  },
+
+  isLiving: function () {
+    if (this.isLive) {
+      return true;
+    } else {
+       view.displayYell(this.name + '一动不动，已经去了天堂');
+      return false;
+    }
+  },
+
+  // 让宠物可以跑起来
+  run: function() {
+    // 跑起来之前，先判断是否存活，
+    if (this.isLive) {
+      // 如果饱食度低于20，宠物拒绝跑动
+      if (this.food <= 20 ) {
+         view.displayYell('主人！' + this.name + '饿了！');
+      } else {
+         view.displayYell( this.name + '在草地上撒欢跑步');
+        // this.food = this.food - 10;
+        this.food -= 10;
+      }
+    } else {
+       view.displayYell('一动不动，已经去了天堂');
+    }
+
+  },
+
+  feed: function () {
+    if (this.isLive) {
+      this.food = 100;
+      view.displayYell(this.name + '吃饱了，满意的对你摇头晃脑');
+    }
+  },
+
+  live: function() {
+    let self = this;
+    this.liveTimer = setInterval(function () {
+      self.food--;
+      self.checkFood();
+      self.checkHealth();
+    }, 300);
+  },
+
+  checkFood: function (){
+    if (this.food <= 0) {
+      this.food = 0;
+      this.health -= 5;
+      view.displayYell('Wang!Wang!Wang!')
+    } else if (this.food >= 80) {
+      this.food = this.food >= 100 ? 100 : this.food;
+      this.health += 5;
+    }
+  },
+
+  checkHealth: function () {
+    //  view.displayYell(this.health);
+    this.health = this.health >= 100 ? 100 : this.health;
+    if (this.health <= 0 ) {
+      this.dead();
+    };
+  },
+
+  dead: function () {
+    view.displayYell("aoWooooooo....");
+    clearInterval(this.liveTimer);
+    this.isLive = false;
+  },
+
+  // 该方法用于告诉别人，宠物目前的状态 
+  tellStatus () {
+    return '饱食度: [' + this.food + '], 健康值: [' + this.health + '], 是否存活: [' + (this.isLive ? '活的' : '挂了') + ']';
+  },
+
+  resurrect: function () {
+    if (!this.isLive) {
+      this.isLive = true;
+      this.health = 100;
+      this.food = 100;
+      this.live();
+      view.displayYell('为你而战，我的主人');
+    } else {
+      view.displayYell('说啥呢，老子活蹦乱跳');
+    }
+  },
+  
+
+
+
+
+  acquisition:function(){
+    if(!this.islive){
+      this.isLive = true;
+      this.health = 100;
+      this.food = 100;
+      this.live();
+      let babyDogDiv = document.getElementById('babyDogPic');
+      babyDogDiv.style.display = "block";
+    }
+  }
+};
+
+
+
+
+
+
 
 let view = {
   displayDog: function () {
@@ -128,6 +267,10 @@ let view = {
     let dogDiv = document.getElementById('dogPic');
     // 为dogDiv 设置新的属性
     dogDiv.setAttribute("class", "dog");
+  },
+  displayBabyDog:function(){
+    let babyDogDiv = document.getElementById('babyDog');
+    babyDogDiv.setAttribute("class","babyDog")
   },
 
   displayStatus: function () {
@@ -137,16 +280,35 @@ let view = {
     }, 100);
   },
 
+  displayBabyStatus: function () {
+    setInterval(function () {
+      let babyDogStatus = document.getElementById("babyStatus");
+      dogStatus.innerHTML = babyDog.tellStatus();
+    }, 100);
+  },
+
   displayYell: function (str) {
     let dogYell = document.getElementById('yell');
     dogYell.innerHTML = str;
+  },
+
+
+  displayBabyYell: function (str) {
+    let dogYell = document.getElementById('babyDogYell');
+    dogYell.innerHTML = str;
   }
-}
+  
+};
 
 view.displayDog();
 view.displayStatus();
 view.displayYell('我是一只快乐的土狗');
 dog.live();
+
+babyDog.live();
+view.displayBabyDog();
+view.displayBabyStatus();
+view.displayBabyYell('我是一只快乐的土狗');
 
 
 // 调用属性
