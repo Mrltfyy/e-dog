@@ -144,7 +144,7 @@ let babyDog = {
   
   tellName: function() {
     if (!this.isLiving()) return;
-     view.displayYell('my name is ' + this.name);
+     view.displayBabyYell('my name is ' + this.name);
     return this.name;
   },
 
@@ -158,7 +158,7 @@ let babyDog = {
     if (this.isLive) {
       return true;
     } else {
-       view.displayYell(this.name + '一动不动，已经去了天堂');
+       view.displayBabyYell(this.name + '一动不动，已经去了天堂');
       return false;
     }
   },
@@ -169,14 +169,14 @@ let babyDog = {
     if (this.isLive) {
       // 如果饱食度低于20，宠物拒绝跑动
       if (this.food <= 20 ) {
-         view.displayYell('主人！' + this.name + '饿了！');
+         view.displayBabyYell('主人！' + this.name + '饿了！');
       } else {
-         view.displayYell( this.name + '在草地上撒欢跑步');
+         view.displayBabyYell( this.name + '在草地上撒欢跑步');
         // this.food = this.food - 10;
         this.food -= 10;
       }
     } else {
-       view.displayYell('一动不动，已经去了天堂');
+       view.displayBabyYell('一动不动，已经去了天堂');
     }
 
   },
@@ -184,7 +184,7 @@ let babyDog = {
   feed: function () {
     if (this.isLive) {
       this.food = 100;
-      view.displayYell(this.name + '吃饱了，满意的对你摇头晃脑');
+      view.displayBabyYell(this.name + '吃饱了，满意的对你摇头晃脑');
     }
   },
 
@@ -201,7 +201,7 @@ let babyDog = {
     if (this.food <= 0) {
       this.food = 0;
       this.health -= 5;
-      view.displayYell('Wang!Wang!Wang!')
+      view.displayBabyYell('Wang!Wang!Wang!')
     } else if (this.food >= 80) {
       this.food = this.food >= 100 ? 100 : this.food;
       this.health += 5;
@@ -217,7 +217,7 @@ let babyDog = {
   },
 
   dead: function () {
-    view.displayYell("aoWooooooo....");
+    view.displayBabyYell("aoWooooooo....");
     clearInterval(this.liveTimer);
     this.isLive = false;
   },
@@ -233,15 +233,11 @@ let babyDog = {
       this.health = 100;
       this.food = 100;
       this.live();
-      view.displayYell('为你而战，我的主人');
+      view.displayBabyYell('为你而战，我的主人');
     } else {
-      view.displayYell('说啥呢，老子活蹦乱跳');
+      view.displayBabyYell('说啥呢，老子活蹦乱跳');
     }
   },
-  
-
-
-
 
   acquisition:function(){
     if(!this.islive){
@@ -251,8 +247,10 @@ let babyDog = {
       this.live();
       let babyDogDiv = document.getElementById('babyDogPic');
       babyDogDiv.style.display = "block";
+      let babyDogYell = document.getElementById('babyDogYell');
+      babyDogYell.style.display = "block";
     }
-  }
+  },
 };
 
 
@@ -270,7 +268,7 @@ let view = {
   },
   displayBabyDog:function(){
     let babyDogDiv = document.getElementById('babyDog');
-    babyDogDiv.setAttribute("class","babyDog")
+   // babyDogDiv.setAttribute("class","babyDog")
   },
 
   displayStatus: function () {
@@ -283,7 +281,7 @@ let view = {
   displayBabyStatus: function () {
     setInterval(function () {
       let babyDogStatus = document.getElementById("babyStatus");
-      dogStatus.innerHTML = babyDog.tellStatus();
+      babyDogStatus.innerHTML = babyDog.tellStatus();
     }, 100);
   },
 
@@ -294,9 +292,10 @@ let view = {
 
 
   displayBabyYell: function (str) {
-    let dogYell = document.getElementById('babyDogYell');
-    dogYell.innerHTML = str;
-  }
+    let dogBabyYell = document.getElementById('babyDogYell');
+    dogBabyYell.innerHTML = str;
+  },
+
   
 };
 
@@ -305,10 +304,12 @@ view.displayStatus();
 view.displayYell('我是一只快乐的土狗');
 dog.live();
 
-babyDog.live();
+
 view.displayBabyDog();
 view.displayBabyStatus();
 view.displayBabyYell('我是一只快乐的土狗');
+babyDog.live();
+
 
 
 // 调用属性

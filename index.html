@@ -25,11 +25,24 @@
       width: 500px;
       height: 280px;
       padding-top: 10px;
+      position: relative;
       /* background-image: url(./images/babydog.jpg); */
     }
     .babyDog{
       padding-top: 100px;
     }
+    .babyDogYell{
+      position: absolute;
+      padding-left: 15px;
+      top: 490px;
+      left: 550px;
+      width: 500px;
+      height: 100px;
+      line-height: 20px;
+      background-color: chocolate;
+      border: 2px solid black;
+    }
+    
   </style>
 </head>
 <body>
@@ -46,10 +59,14 @@
 
   <div id="babyDog" class="babyDog">
   <input type="button" value="生了个小崽子" onclick="babyDog.acquisition()">
-  </div>
   <img src="./images/babydog.jpg" id="babyDogPic" style="display: none;">
-  <div id="babyStatus"></div>
-  <div id="babyDogYell" class="babyDogYell"></div>
+  <div id="babyDogYell" class="babyDogYell" style="display: none"></div>
+  </div>
+  <div id="babyStatus" ></div>
+
+  <!-- <button onclick="babyDog.feed()">喂它！</button>
+  <button onclick="babyDog.run()">没事走两步！</button>
+  <button onclick="babyDog.resurrect()">复活吧！</button> -->
   <!-- <ing id="babyDogPic" class="babyDogPic"></div> -->
 </body>
 </html>
