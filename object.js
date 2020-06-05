@@ -66,7 +66,7 @@ let dog = {
   feed: function () {
     if (this.isLive) {
       this.food = 100;
-      view.displayYell(this.name + '吃饱了，满意的对你摇头晃脑');
+      view.displayYell(this.name + '吃饱了，对你很满意');
     }
   },
 
@@ -83,7 +83,7 @@ let dog = {
     if (this.food <= 0) {
       this.food = 0;
       this.health -= 5;
-      view.displayYell('Wang!Wang!Wang!')
+      view.displayYell('Wang!Wang!Wang!饿了饿了')
     } else if (this.food >= 80) {
       this.food = this.food >= 100 ? 100 : this.food;
       this.health += 5;
@@ -184,7 +184,7 @@ let babyDog = {
   feed: function () {
     if (this.isLive) {
       this.food = 100;
-      view.displayBabyYell(this.name + '吃饱了，满意的对你摇头晃脑');
+      view.displayBabyYell(this.name + '吃饱了，对你很满意');
     }
   },
 
@@ -201,7 +201,7 @@ let babyDog = {
     if (this.food <= 0) {
       this.food = 0;
       this.health -= 5;
-      view.displayBabyYell('Wang!Wang!Wang!')
+      view.displayBabyYell('Wang!Wang!Wang!饿了饿了')
     } else if (this.food >= 80) {
       this.food = this.food >= 100 ? 100 : this.food;
       this.health += 5;
@@ -251,6 +251,10 @@ let babyDog = {
       babyDogYell.style.display = "block";
     }
   },
+
+
+
+
 };
 
 
@@ -278,12 +282,30 @@ let view = {
     }, 100);
   },
 
+
+  // displayStatus: function(){
+  //   let status = document.getElementById('status');
+  //   status.style.height = "100px";
+  //   setInterval(function (){
+  //     status.style.height = "50px";
+  //   }, 100)
+  //   },
+
+
   displayBabyStatus: function () {
     setInterval(function () {
       let babyDogStatus = document.getElementById("babyStatus");
       babyDogStatus.innerHTML = babyDog.tellStatus();
     }, 100);
   },
+
+  // displayBabyStatus: function(){
+  // let statusBaby = document.getElementById('babyStatus');
+  // statusBaby.style.height = "100px";
+  // setInterval(function (){
+  //   statusBaby.style.height = "50px";
+  // }, 1000)
+  // },
 
   displayYell: function (str) {
     let dogYell = document.getElementById('yell');
@@ -295,8 +317,9 @@ let view = {
     let dogBabyYell = document.getElementById('babyDogYell');
     dogBabyYell.innerHTML = str;
   },
-
   
+
+
 };
 
 view.displayDog();
@@ -307,7 +330,7 @@ dog.live();
 
 view.displayBabyDog();
 view.displayBabyStatus();
-view.displayBabyYell('我是一只快乐的土狗');
+view.displayBabyYell('我是一只快乐的小狗')
 babyDog.live();
 
 

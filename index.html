@@ -9,6 +9,15 @@
       width: 500px;
       height: 310px;
       background-image: url("./images/dog.jpg");
+      margin: 10px;
+
+    }
+    .status{
+      margin: 10px;
+      
+    }
+    .babyStatus{
+      margin: 10px;
     }
     .yell {
       position: absolute;
@@ -20,16 +29,20 @@
       line-height: 20px;
       background-color: chocolate;
       border: 2px solid black;
+       margin: 10px;
     }
     .babyDogPic {
       width: 500px;
       height: 280px;
       padding-top: 10px;
       position: relative;
-      /* background-image: url(./images/babydog.jpg); */
+      /* background-image: 
+      url(./images/babydog.jpg); */
+      margin: 10px;
     }
     .babyDog{
-      padding-top: 100px;
+      margin-top: 100px;
+     
     }
     .babyDogYell{
       position: absolute;
@@ -41,8 +54,33 @@
       line-height: 20px;
       background-color: chocolate;
       border: 2px solid black;
+      display: none;
+      margin-top: 100px;
     }
-    
+    button {
+      width: 120px;
+      height: 40px;
+      border:2px solid olivedrab;
+      line-height: 10px;
+      background-color: palegreen;
+      color: rebeccapurple;
+      margin: 10px;
+      padding: 10px;
+
+    }
+    input {
+      width: 120px;
+      height: 40px;
+      border:2px solid olivedrab;
+      line-height: 10px;
+      background-color: palegreen;
+      color: rebeccapurple;
+      margin: 10px;
+
+
+    }
+
+
   </style>
 </head>
 <body>
@@ -50,8 +88,9 @@
   <div id="yell" class="yell"></div>
   <div id="dogPic" class="dog" ></div>
 
-  <div id="status"></div>
+  <div id="status" class="status"></div>
   <script src="object.js"></script>
+  <!-- <script src="index.js"></script> -->
   <button onclick="dog.feed()">喂它！</button>
   <button onclick="dog.run()">没事走两步！</button>
   <button onclick="dog.resurrect()">复活吧！</button>
@@ -60,13 +99,13 @@
   <div id="babyDog" class="babyDog">
   <input type="button" value="生了个小崽子" onclick="babyDog.acquisition()">
   <img src="./images/babydog.jpg" id="babyDogPic" style="display: none;">
-  <div id="babyDogYell" class="babyDogYell" style="display: none"></div>
+  <div id="babyDogYell" class="babyDogYell" ></div>
   </div>
-  <div id="babyStatus" ></div>
+  <div id="babyStatus" class="babyStatus"></div>
 
-  <!-- <button onclick="babyDog.feed()">喂它！</button>
+  <button onclick="babyDog.feed()">喂它！</button>
   <button onclick="babyDog.run()">没事走两步！</button>
-  <button onclick="babyDog.resurrect()">复活吧！</button> -->
-  <!-- <ing id="babyDogPic" class="babyDogPic"></div> -->
+  <button onclick="babyDog.resurrect()">复活吧！</button>
+  <!-- <img id="babyDogPic" class="babyDogPic"></div> -->
 </body>
 </html>
