@@ -79,8 +79,12 @@
 
 
     }
-
-
+    .babyStatus{
+      display: none;
+    }
+    .content {
+      margin: 10px;
+    }
   </style>
 </head>
 <body>
@@ -98,14 +102,17 @@
 
   <div id="babyDog" class="babyDog">
   <input type="button" value="生了个小崽子" onclick="babyDog.acquisition()">
-  <img src="./images/babydog.jpg" id="babyDogPic" style="display: none;">
+  <img src="./images/babydog.jpg" id="babyDogPic" onclick="babyDog.stroll()" style="display: none;">
   <div id="babyDogYell" class="babyDogYell" ></div>
   </div>
-  <div id="babyStatus" class="babyStatus"></div>
-
+  <div id="babyStatus" class="babyStatus" style="display:none;"></div>
+  <div class="content">
+    <progress value="60" max="100" id="blood"></progress>
+  </div>
   <button onclick="babyDog.feed()">喂它！</button>
   <button onclick="babyDog.run()">没事走两步！</button>
   <button onclick="babyDog.resurrect()">复活吧！</button>
   <!-- <img id="babyDogPic" class="babyDogPic"></div> -->
+
 </body>
 </html>

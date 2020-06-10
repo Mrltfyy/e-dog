@@ -121,6 +121,7 @@ let dog = {
     }
   },
 
+  
 
 };
 
@@ -225,6 +226,7 @@ let babyDog = {
   // 该方法用于告诉别人，宠物目前的状态 
   tellStatus () {
     return '饱食度: [' + this.food + '], 健康值: [' + this.health + '], 是否存活: [' + (this.isLive ? '活的' : '挂了') + ']';
+
   },
 
   resurrect: function () {
@@ -252,6 +254,14 @@ let babyDog = {
     }
   },
 
+
+
+  blood: function (){
+    setInterval (function(){
+    let progress = document.getElementById('blood');
+    progress.setAttribute("value", "100");
+    } , 100)
+  },
 
 
 
@@ -297,6 +307,8 @@ let view = {
       let babyDogStatus = document.getElementById("babyStatus");
       babyDogStatus.innerHTML = babyDog.tellStatus();
     }, 100);
+   
+   // document.getElementById('babyStatus').style.display = "inlineblock";
   },
 
   // displayBabyStatus: function(){
@@ -317,8 +329,7 @@ let view = {
     let dogBabyYell = document.getElementById('babyDogYell');
     dogBabyYell.innerHTML = str;
   },
-  
-
+   
 
 };
 
